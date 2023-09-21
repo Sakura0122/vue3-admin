@@ -2,10 +2,11 @@
 import { ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import useUserStore from '@/stores/modules/user'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { getTime } from '@/utils/time'
 
-const route = useRoute()
+defineOptions({ name: 'Login' })
+
 const router = useRouter()
 const userStore = useUserStore()
 
@@ -25,12 +26,12 @@ const accountRules: FormRules = {
 // 登录
 const handleLogin = async () => {
   const valid = await formRef.value?.validate()
-  if (!valid) return false
+  console.log(valid)
+  if (!valid) return
 
   try {
     await userStore.userLogin(account.value)
-    let redirect: any = route.query.redirect
-    await router.push({ path: redirect || '/' })
+    router.push('/')
     ElNotification({
       type: 'success',
       message: '欢迎回来',

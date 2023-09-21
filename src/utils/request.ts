@@ -39,7 +39,7 @@ service.interceptors.response.use(
     if (res.data.code === 200) {
       return res.data
     } else {
-      ElMessage.error(res.data.data || '网络异常')
+      ElMessage.error(res.data.message || '网络异常')
       return Promise.reject(res.data)
     }
   },

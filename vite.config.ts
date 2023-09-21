@@ -29,6 +29,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  //scss全局变量一个配置
+  css: {
+    preprocessorOptions: {
+      scss: {
+        javascriptEnabled: true,
+        additionalData: '@import "./src/assets/css/variable.scss";'
+      }
+    }
+  },
   //代理跨域
   server: {
     proxy: {
