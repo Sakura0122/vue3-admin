@@ -1,13 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { constantRoute } from '@/router/routes'
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [
-    {
-      path: '/404',
-      component: () => import('@/views/404/index.vue')
-    }
-  ]
+  routes: constantRoute,
+  scrollBehavior: () => ({ left: 0, top: 0 })
 })
 
 export default router
