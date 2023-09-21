@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <router-view />
+  <div>数据大屏</div>
 </template>
 
 <style scoped lang="scss"></style>

@@ -4,9 +4,9 @@ defineOptions({
 })
 
 interface Props {
-  width: string
-  height: string
-  prefix: string
+  width?: string
+  height?: string
+  prefix?: string
   name: string
   color?: string
 }
