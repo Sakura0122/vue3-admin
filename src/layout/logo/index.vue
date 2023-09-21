@@ -18,7 +18,6 @@ defineOptions({ name: 'Logo' })
   align-items: center;
   width: 100%;
   height: var(--base-menu-logo-height);
-  color: #fff;
 
   img {
     width: 40px;
