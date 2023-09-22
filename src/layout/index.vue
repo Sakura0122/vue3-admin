@@ -1,36 +1,46 @@
 <script setup lang="ts">
 import Logo from './logo/index.vue'
 import MenuItem from './menu-item/index.vue'
+import AppMain from './app-main/index.vue'
+import AppTabbar from './app-tabbar/index.vue'
 import useUserStore from '@/stores/modules/user'
 import { useRoute } from 'vue-router'
+import useSettingStore from '@/stores/modules/setting'
 
 defineOptions({ name: 'Layout' })
 
 const route = useRoute()
-
-// 用户仓库
 const userStore = useUserStore()
+const settingStore = useSettingStore()
 </script>
 
 <template>
   <el-container class="layout-container">
-    <el-aside>
+    <el-aside :class="{ fold: !!settingStore.fold }">
       <Logo />
       <!-- 滚动组件 -->
       <el-scrollbar class="scrollbar">
         <!-- 菜单组件 -->
-        <el-menu :default-active="route.path" background-color="#001529" text-color="#fff">
+        <el-menu
+          :collapse="settingStore.fold"
+          :collapse-transition="false"
+          :default-active="route.path"
+          background-color="#001529"
+          text-color="#fff"
+        >
           <menu-item :menu-list="userStore.menuRoutes" />
         </el-menu>
       </el-scrollbar>
     </el-aside>
 
     <el-container>
-      <el-header>我是头部</el-header>
+      <el-header>
+        <app-tabbar />
+      </el-header>
 
       <el-main>
         <el-scrollbar>
-          <router-view />
+          <app-main />
         </el-scrollbar>
       </el-main>
     </el-container>
@@ -47,6 +57,11 @@ const userStore = useUserStore()
     height: 100vh;
     background-color: var(--base-menu-background);
     color: #fff;
+    transition: all 0.3s;
+
+    &.fold {
+      width: var(--base-menu-min-width);
+    }
 
     .scrollbar {
       width: 100%;
@@ -59,8 +74,8 @@ const userStore = useUserStore()
   }
 
   .el-header {
+    border-bottom: 1px solid #dcdfe6;
     height: var(--base-tabbar-height);
-    background-color: aqua;
   }
 }
 </style>

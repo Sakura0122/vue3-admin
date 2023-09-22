@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import setting from '@/setting'
+import useSettingStore from '@/stores/modules/setting'
 
 defineOptions({ name: 'Logo' })
+const settingStore = useSettingStore()
 </script>
 
 <template>
   <div class="logo">
     <img v-if="setting.logoHidden" :src="setting.logo" alt="" />
-    <p>{{ setting.title }}</p>
+    <p v-show="!settingStore.fold">{{ setting.title }}</p>
   </div>
 </template>
 
@@ -27,6 +29,7 @@ defineOptions({ name: 'Logo' })
   p {
     margin-left: 10px;
     font-size: var(--base-logo-title-fontSize);
+    white-space: nowrap;
   }
 }
 </style>
