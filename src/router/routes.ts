@@ -21,7 +21,7 @@ export const constantRoute: RouteRecordRaw[] = [
     meta: {
       title: '',
       hidden: false,
-      icon: ''
+      icon: 'HomeFilled'
     },
     redirect: '/home',
     children: [

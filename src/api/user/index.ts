@@ -15,3 +15,7 @@ export function loginApi(data: loginFormData) {
 export function getUserInfoApi() {
   return request<userInfoResponseData>('/admin/acl/index/info')
 }
+
+export function logoutApi() {
+  return request<any>('/admin/acl/index/logout', 'post')
+}

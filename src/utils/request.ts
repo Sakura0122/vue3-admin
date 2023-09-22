@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { Method, AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
 import { hideLoading, showLoading } from './loading'
-import { getToken } from './token'
+import useUserStore from '@/stores/modules/user'
 
 // let baseURL: string
 // // 是否是开发环境
@@ -20,9 +20,9 @@ const service = axios.create({
 service.interceptors.request.use(
   (config) => {
     showLoading()
-    const token = getToken()
-    if (config.headers && token) {
-      config.headers['Authorization'] = `Bearer ${token}`
+    const userStore = useUserStore()
+    if (userStore.token) {
+      config.headers.token = userStore.token
     }
     return config
   },

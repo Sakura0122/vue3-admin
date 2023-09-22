@@ -8,6 +8,7 @@ import 'virtual:svg-icons-register'
 
 import App from '@/App.vue'
 import router from '@/router'
+import '@/router/permisstion'
 import pinia from '@/stores'
 import '@/assets/css/index.scss'
 
