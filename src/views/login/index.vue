@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import useUserStore from '@/stores/modules/user'
 import { useRouter } from 'vue-router'
-import { getTime } from '@/utils/time'
+import { getTime } from '@/utils/helpers'
 
 defineOptions({ name: 'Login' })
 

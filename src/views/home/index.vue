@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import useUserStore from '@/stores/modules/user'
-import { getTime } from '@/utils/time'
+import { getTime } from '@/utils/helpers'
 
 defineOptions({ name: 'Home' })
 
