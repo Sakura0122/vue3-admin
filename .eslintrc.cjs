@@ -15,6 +15,7 @@ module.exports = {
   },
   rules: {
     'vue/multi-word-component-names': 'off',
-    'no-empty': 'off'
+    'no-empty': 'off',
+    "vue/no-unused-vars": "off"
   }
 }

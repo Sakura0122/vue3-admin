@@ -14,11 +14,11 @@ import useUserStore from '@/stores/modules/user'
 
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
-  timeout: 5000
+  timeout: 10000
 })
 
 service.interceptors.request.use(
-  (config) => {
+  config => {
     showLoading()
     const userStore = useUserStore()
     if (userStore.token) {
@@ -26,13 +26,13 @@ service.interceptors.request.use(
     }
     return config
   },
-  (error) => {
+  error => {
     return Promise.reject(error)
   }
 )
 
 service.interceptors.response.use(
-  (res) => {
+  res => {
     setTimeout(() => {
       hideLoading()
     }, 200)
@@ -43,7 +43,7 @@ service.interceptors.response.use(
       return Promise.reject(res.data)
     }
   },
-  (error) => {
+  error => {
     setTimeout(() => {
       hideLoading()
     }, 200)
