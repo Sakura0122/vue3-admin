@@ -70,7 +70,7 @@ const closeForm = () => {
   ruleFormRef.value?.clearValidate()
 }
 // 图片上传之前
-const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+const beforeAvatarUpload: UploadProps['beforeUpload'] = rawFile => {
   if (!['image/png', 'image/jpeg', 'image/gif'].includes(rawFile.type)) {
     ElMessage.error('上传文件格式必须是PNG|JPG|GIF!')
     return false
@@ -81,7 +81,7 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
   return true
 }
 // 图片上传成功
-const handleAvatarSuccess: UploadProps['onSuccess'] = (response) => {
+const handleAvatarSuccess: UploadProps['onSuccess'] = response => {
   formData.logoUrl = response.data
   ruleFormRef.value?.clearValidate('logoUrl')
 }
