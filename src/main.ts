@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 // element样式和图标
 import 'element-plus/dist/index.css'
+// 暗黑模式需要的样式
+import 'element-plus/theme-chalk/dark/css-vars.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 // svg插件配置代码
